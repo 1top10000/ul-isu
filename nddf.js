@@ -1,7 +1,7 @@
 function Rnddf() {
 
 }
-function Cnddf(d, fn) {
+async function Cnddf(d, fn) {
     function cb(n, v, t) {
         const textEncoder = new TextEncoder();
         const vh = Array.from(textEncoder.encode(v), (i) => {
@@ -40,7 +40,6 @@ function Cnddf(d, fn) {
         }
     }
     let f = '';
-    r(d, fn).then(function() {
-        return f;
-    });
+    await r(d, fn);
+    return f;
 }
