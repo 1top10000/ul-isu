@@ -24,7 +24,7 @@ function Cnddf(d, fn) {
     function r(j, p) {
         if (Object.keys(j).length == 1 && typeof j[Object.keys(j)] != 'object') {
             console.log(j, p);
-            f = f + Cnddf(p, j, '02');
+            f = f + cb(p, j, '02');
         } else {
             let e;
             if (Object.keys(j).length == 1) {
