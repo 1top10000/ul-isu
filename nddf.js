@@ -23,7 +23,6 @@ async function Cnddf(d, fn) {
     }
     function r(j, p) {
         if (Object.keys(j).length == 1 && typeof j[Object.keys(j)] != 'object') {
-            console.log(j, p);
             f = f + cb(p, j, '02');
         } else {
             let e;
@@ -43,3 +42,6 @@ async function Cnddf(d, fn) {
     await r(d, fn);
     return f;
 }
+Cnddf({'h':'hg', 'q':'qo', 'r':{'pe':'rt', 'oo':'fg'}}, 'ro').then(res => {
+    console.log(res);
+});
