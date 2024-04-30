@@ -21,8 +21,6 @@ function Cnddf(d, fn) {
         console.log(vc);
         return nc + vc + 'f0' + nh + vh + t;
     }
-    r(d, fn);
-    let f = "";
     function r(j, p) {
         if (Object.keys(j).length == 1 && typeof j[Object.keys(j)] != 'object') {
             console.log(j, p);
@@ -41,4 +39,8 @@ function Cnddf(d, fn) {
             }
         }
     }
+    let f = '';
+    r(d, fn).then(function() {
+        return f;
+    });
 }
