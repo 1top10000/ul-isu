@@ -1,7 +1,7 @@
 function Rnddf() {
 
 }
-function Cnddf(d) {
+function Cnddf(d, fn) {
     function cb(n, v, t) {
         const textEncoder = new TextEncoder();
         const vh = Array.from(textEncoder.encode(v), (i) => {
@@ -21,9 +21,12 @@ function Cnddf(d) {
         console.log(vc);
         return nc + vc + 'f0' + nh + vh + t;
     }
+    r(d, fn);
+    let f = "";
     function r(j, p) {
         if (Object.keys(j).length == 1 && typeof j[Object.keys(j)] != 'object') {
             console.log(j, p);
+            f = f + Cnddf(p, j, '02');
         } else {
             let e;
             if (Object.keys(j).length == 1) {
