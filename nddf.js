@@ -79,11 +79,31 @@ async function Cnddf(d, fn) {
     }
     function r(j, p) {
         console.log(j, p);
-        let g = (typeof j[Object.keys(j)[0]]) != 'object';
-        if (j[Object.keys(j)[0]] === null) {
-            g = true;
+        let q = true;
+        let x = true;
+        let y = false;
+        if (typeof j == 'string') {
+            x = Object.keys(j[Object.keys(j)[0]]).length == 1;
+            if ((typeof j[Object.keys(j)[0]] != 'object') || (j[Object.keys(j)[0]] === null)) {
+                q = true;
+            } else {
+                q = false;
+            }
+        } else {
+            if ((typeof j != 'object') || (j === null)) {
+                q = true;
+            } else {
+                q = false;
+            }
         }
-        if (Object.keys(j).length == 1 && g && Object.keys(j[Object.keys(j)[0]]).length == 1) {
+        if (typeof j == 'object' && (j != null)) {
+            x = Object.keys(j[Object.keys(j)[0]]).length == 1;
+            y = Object.keys(j[Object.keys(j)[0]]).length == 0;
+        }
+        if (Object.keys(j).length == 1 && (typeof j[Object.keys(j)] != 'object' || typeof j[Object.keys(j)] === null)) {
+            q = true;
+        }
+        if (q && x) {
             var type = '7'; //undefined:0 (null):9 boolean:a number:f bigint:4 string:1 symbol:6(x) function:e(x) ?:7
             if (typeof j[Object.keys(j)[0]] === 'undefined') {
                 type = '0';
@@ -106,7 +126,7 @@ async function Cnddf(d, fn) {
                 console.log(j, Object.keys(j));
                 f = f + cb(p, j[Object.keys(j)[0]].toString(), type + '2');
             }
-        } else if (Object.keys(j).length == 1 && Object.keys(j[Object.keys(j)[0]]).length == 0) {
+        } else if (y) {
             f = f + cb(p, '0', '73');
         } else {
             let e;
@@ -126,3 +146,8 @@ async function Cnddf(d, fn) {
     await r(d, fn);
     return f;
 }
+var b = new Blob([new Uint8Array([65, 66, 67])]);
+var uRl = URL.createObjectURL(b);
+document.querySelector('#fef').href = uRl;
+document.querySelector('#fef').click();
+URL.revokeObjectURL(uRl);
