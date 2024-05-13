@@ -146,8 +146,17 @@ async function Cnddf(d, fn) {
     await r(d, fn);
     return f;
 }
-var b = new Blob([new Uint8Array([65, 66, 67])]);
-var uRl = URL.createObjectURL(b);
-document.querySelector('#fef').href = uRl;
-document.querySelector('#fef').click();
-URL.revokeObjectURL(uRl);
+function d(e, o) {
+    let qr = [];
+    for(let i_ = 0; i_ < o.length / 2; i_++) {
+        qr[i_] = parseInt(o.substr(i_ * 2, 2), 16);
+    }
+    const h = document.createElement('a');
+    document.body.appendChild(h);
+    h.download = e;
+    const UrL = URL.createObjectURL(new Blob([new Uint8Array(qr)]));
+    h.href = UrL;
+    h.click();
+    URL.revokeObjectURL(UrL);
+    h.remove();
+}
