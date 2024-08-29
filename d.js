@@ -1,4 +1,4 @@
-const f = {
+window.exb = {
     'objects': [
         {
             "id": "30hn",
